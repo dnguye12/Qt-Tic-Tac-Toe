@@ -86,6 +86,9 @@
            <family>Script</family>
           </font>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(21, 23, 113);
 border: none;</string>
@@ -132,6 +135,9 @@ border: none;</string>
            <pointsize>14</pointsize>
           </font>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(72, 75, 165);
 border-radius: 15px;
@@ -157,6 +163,9 @@ color: white;</string>
        </item>
        <item>
         <widget class="QToolButton" name="toolButton_11">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(21, 23, 113);
 border: none;</string>
@@ -204,26 +213,47 @@ border: none;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: rgb(94, 57, 149);</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QWidget" name="gridWidget" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <property name="leftMargin">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="spacing">
            <number>0</number>
@@ -231,7 +261,7 @@ border: none;</string>
           <item row="1" column="0">
            <widget class="QToolButton" name="toolButton">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -244,6 +274,12 @@ border: none;</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -270,7 +306,7 @@ background-color: rgb(198, 201, 252);</string>
           <item row="1" column="1">
            <widget class="QToolButton" name="toolButton_2">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -283,6 +319,12 @@ background-color: rgb(198, 201, 252);</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -296,7 +338,7 @@ background-color:white;</string>
           <item row="1" column="2">
            <widget class="QToolButton" name="toolButton_3">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -309,6 +351,12 @@ background-color:white;</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -322,7 +370,7 @@ background-color: rgb(198, 201, 252);</string>
           <item row="2" column="0">
            <widget class="QToolButton" name="toolButton_4">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -335,6 +383,12 @@ background-color: rgb(198, 201, 252);</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -348,7 +402,7 @@ background-color:white;</string>
           <item row="3" column="1">
            <widget class="QToolButton" name="toolButton_8">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -361,6 +415,12 @@ background-color:white;</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -374,7 +434,7 @@ background-color:white;</string>
           <item row="3" column="0">
            <widget class="QToolButton" name="toolButton_7">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -387,6 +447,12 @@ background-color:white;</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -400,7 +466,7 @@ background-color: rgb(198, 201, 252);</string>
           <item row="2" column="2">
            <widget class="QToolButton" name="toolButton_6">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -413,6 +479,12 @@ background-color: rgb(198, 201, 252);</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -426,7 +498,7 @@ background-color:white;</string>
           <item row="3" column="2">
            <widget class="QToolButton" name="toolButton_9">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -439,6 +511,12 @@ background-color:white;</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
@@ -452,7 +530,7 @@ background-color: rgb(198, 201, 252);</string>
           <item row="2" column="1">
            <widget class="QToolButton" name="toolButton_5">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -465,6 +543,12 @@ background-color: rgb(198, 201, 252);</string>
               <width>160</width>
               <height>160</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string notr="true"/>
             </property>
             <property name="styleSheet">
              <string notr="true">border: none;
