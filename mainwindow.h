@@ -45,8 +45,21 @@ private:
 
 
 
+    int end();
+
     void playerMove(QString name);
 
     void aiMove();
+
+    int empty_c(int r);
+
+    int empty_r(int c);
+
+    void draw();
 };
+
+bool winnable(QVector<QVector<int>> board, int &row, int &col, int &dia);
+
+bool vulnerable(QVector<QVector<int>> board, int &row, int &col, int &dia);
+
 #endif // MAINWINDOW_H
