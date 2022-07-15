@@ -4,8 +4,9 @@
 #include <QToolButton>
 #include <QTime>
 #include <QRandomGenerator>
+#include <QMessageBox>
 
-
+bool done = false;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,6 +31,7 @@ void MainWindow::init() {
 }
 
 void MainWindow::playerMove(QString name) {
+    if(not done) {
     QToolButton *btn = ui->gridWidget->findChild<QToolButton *>(name);
     if(btn->icon().isNull()) {
         btn->setIcon(QIcon(":/images/images/o.png"));
@@ -45,13 +47,23 @@ void MainWindow::playerMove(QString name) {
         board[col][lin] = 1;
         draw();
 
+        if(end() != 0) {
+            endMessage(end());
+            return;
+        }
         aiMove();
 
         draw();
 
+        if(end() != 0) {
+            endMessage(end());
+            return;
+        }
+
     }else {
         return;
     }
+}
 }
 
 void MainWindow::aiMove() {
@@ -229,6 +241,7 @@ bool vulnerable(QVector<QVector<int>> board, int &row, int &col, int &dia) {
 }
 
 int MainWindow::end() {
+    bool tie = true;
     for(int i = 0; i < 3; i++) {
         if(board[i][0] == board[i][1] and board[i][0] == board[i][2]) {
             return board[i][0];
@@ -240,6 +253,14 @@ int MainWindow::end() {
         }
     }
 
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(board[i][j] == 0) {
+                tie = false;
+            }
+        }
+    }
+
     if(board[0][0] == board[1][1] and board[0][0] == board[2][2]) {
         return board[0][0];
     }
@@ -247,7 +268,37 @@ int MainWindow::end() {
     if(board[0][2] == board[1][1] and board[0][0] == board[2][0]) {
         return board[0][2];
     }
+    if(tie) {
+        return 3;
+    }
     return 0;
+}
+
+void MainWindow::endMessage(int p) {
+    QMessageBox msgBox;
+    if(p == 1) {
+        msgBox.setText("You have won!!");
+    }else if(p == 2) {
+        msgBox.setText("The ai dabbed on you!");
+    }else {
+        msgBox.setText("The game is a tie");
+    }
+
+    msgBox.setInformativeText("Do you want to start a new game?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    int ret = msgBox.exec();
+
+    if(ret == QMessageBox::Yes) {
+        for(int i = 0; i < 3; i++) {
+            for(int j =0; j < 3; j++) {
+                board[i][j] = 0;
+            }
+        }
+        draw();
+        done = false;
+ }else if(ret == QMessageBox::No) {
+        done = true;
+    }
 }
 
 bool winnable(QVector<QVector<int>> board,int &row, int &col, int &dia) {
@@ -416,6 +467,7 @@ void MainWindow::on_toolButton_11_clicked()
             board[i][j] = 0;
         }
     }
+    done = false;
     draw();
 }
 

@@ -51,6 +51,8 @@ private:
 
     int end();
 
+    void endMessage(int p);
+
     void playerMove(QString name);
 
     void aiMove();
