@@ -3,6 +3,8 @@
 
 #include <QToolButton>
 #include <QTime>
+#include <QRandomGenerator>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -171,7 +173,8 @@ void MainWindow::aiMove() {
 
         }
     }
-    qDebug() << "vulnerabme test";
+
+    /*
     for(i = 0; i < 3; i++) {
         for(j = 0; j < 3; j++) {
 
@@ -181,8 +184,11 @@ void MainWindow::aiMove() {
 
                 if(not vulnerable(test, row, col, dia)) {
                     break;
-                }
+                }else {
+                    qDebug() << "vulnerabme";
+                 board[i][j] = 2;
                 test[i][j] = temp;
+                }
             }
 
             if(board[i][j] == 0) {
@@ -191,76 +197,89 @@ void MainWindow::aiMove() {
 
                 if(not vulnerable(test, row, col, dia)) {
                     break;
-                }
+                }else {
+                    qDebug() << "vulnerabme";
+                    board[i][j] = 2;
                 test[i][j] = temp;
+                }
             }
 
         }
+
+    }*/
+
+    if(vulnerable(board, row, col, dia)) {
+        qDebug() << "vulnerable";
+        qDebug() << "crd: " << col <<" " << row << " " << dia;
+        if(col > 0) {
+
+            if( board[empty_r(col)][col] != 1) {
+                board[empty_r(col)][col] = 2;
+            }
+            return;
+        }
+
+        //qDebug() << "row test";
+        if(row > 0) {
+
+            if(board[row][empty_c(row)] != 1) {
+                board[row][empty_c(row)] = 2;
+            }
+            return;
+        }
+
+        //qDebug() << "dia test";
+        if(dia == 0) {
+
+            if(board[0][0] != 1) {
+                board[0][0] = 2;
+                return;
+            }
+
+            if(board[1][1] != 1) {
+                board[1][1] = 2;
+                return;
+            }
+
+            if(board[2][2] != 1) {
+                board[2][2] = 2;
+                return;
+            }
+            return;
+        }
+
+        if(dia == 1) {
+
+            if(board[0][2] != 1) {
+                board[0][2] = 2;
+                return;
+            }
+
+            if(board[1][1] != 1) {
+                board[1][1] = 2;
+                return;
+            }
+
+            if(board[2][0] != 1) {
+                board[2][0] = 2;
+                return;
+            }
+            return;
+        }
     }
 
-    qDebug() << "col test";
-    if(col > 0) {
 
-        if( board[empty_r(col)][col] != 1) {
-            board[empty_r(col)][col] = 2;
-        }
-        return;
+    while(true) {
+    QRandomGenerator generator(QDateTime::currentMSecsSinceEpoch());
+    i = generator.bounded(0,3);
+    j = generator.bounded(0,3);
+    if(board[i][j] == 1) {
+        continue;
+    }else {
+        break;
     }
-
-    qDebug() << "row test";
-    if(row > 0) {
-
-        if(board[row][empty_c(row)] != 1) {
-            board[row][empty_c(row)] = 2;
-        }
-        return;
     }
-
-    qDebug() << "dia test";
-    if(dia == 0) {
-
-        if(board[0][0] != 1) {
-            board[0][0] = 2;
-            return;
-        }
-
-        if(board[1][1] != 1) {
-            board[1][1] = 2;
-            return;
-        }
-
-        if(board[2][2] != 1) {
-            board[2][2] = 2;
-            return;
-        }
-        return;
-    }
-
-    if(dia == 1) {
-
-        if(board[0][2] != 1) {
-            board[0][2] = 2;
-            return;
-        }
-
-        if(board[1][1] != 1) {
-            board[1][1] = 2;
-            return;
-        }
-
-        if(board[2][0] != 1) {
-            board[2][0] = 2;
-            return;
-        }
-        return;
-    }
-qDebug() << i << " " << j;
-if(i > 2) {
-    i = 2;
-}
-if(j > 2) {
-    j = 2;
-}
+    qDebug() << i << " " << j;
     if(board[i][j] != 1) {
         board[i][j] = 2;
         return;
@@ -297,12 +316,12 @@ bool vulnerable(QVector<QVector<int>> board, int &row, int &col, int &dia) {
         return true;
     }
 
-    if( (a == 1 and d == 1 and g != 2) or (a == 1 and d != 2 and g == 1) or (a != 2 and d == 1 and g == 1)) {
+    if( (b == 1 and e == 1 and h != 2) or (b == 1 and e != 2 and h == 1) or (b != 2 and e == 1 and h == 1)) {
         col = 1;
         return true;
     }
 
-    if( (a == 1 and d == 1 and g != 2) or (a == 1 and d != 2 and g == 1) or (a != 2 and d == 1 and g == 1)) {
+    if( (c == 1 and f == 1 and i != 2) or (c == 1 and f != 2 and i == 1) or (c != 2 and f == 1 and i == 1)) {
         col = 2;
         return true;
     }
