@@ -35,6 +35,8 @@ private slots:
 
     void on_toolButton_9_clicked();
 
+    void on_toolButton_11_clicked();
+
 private:
     Ui::MainWindow *ui;
 

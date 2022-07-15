@@ -41,15 +41,6 @@ void MainWindow::playerMove(QString name) {
         int col = val / 3;
         int lin = val % 3;
         board[col][lin] = 1;
-        for(int i = 0; i < 3; i++) {
-            qDebug() << board[i][0] << " " << board[i][1] << " " << board[i][2];
-        }
-        /*
-        QTime dieTime= QTime::currentTime().addSecs(1);
-        while (QTime::currentTime() < dieTime) {
-            QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-        }
-*/
         draw();
 
         aiMove();
@@ -62,155 +53,52 @@ void MainWindow::playerMove(QString name) {
 }
 
 void MainWindow::aiMove() {
-    QVector<QVector<int>> test, temporary;
-    QVector<int> c = QVector<int>(3);
-    test.push_back(c);
-    temporary.push_back(c);
-    test.push_back(c);
-    temporary.push_back(c);
-    test.push_back(c);
-    temporary.push_back(c);
-
 
     int row{-1}, col{-1}, dia{-1};
-    int i, j, temp;
-    for(i = 0; i < 3; i++) {
-        for(j = 0; j < 3; j++) {
-            if(board[i][j] == 0) {
-                temp = board[i][j];
-                if(winnable(test, row, col, dia)) {
-                    qDebug() << "ai winnable";
-                    if(row >= 0) {
-                        if(board[row][empty_c(row)] != 1) {
-                            board[row][empty_c(row)] = 2;
-                            return;
-                        }
-                    }
+    int i, j;
 
-                    if(col >= 0) {
+    if(winnable(board, row, col, dia)) {
 
-                        if(board[empty_r(col)][col] != 1) {
-                            board[empty_r(col)][col] = 2;
-                            return;
-                        }
-
-                    }
-
-                    if(dia == 0) {
-
-                        if(board[0][0] != 1 and board[1][1] != 1 and board[2][2] != 1) {
-                            board[0][0] = 2;
-                            board[1][1] = 2;
-                            board[2][2] = 2;
-
-                        }
-                        return;
-
-                    }else if(dia == 1) {
-
-                        if(board[0][2] != 1 and board[1][1] != 1 and board[2][0] != 1) {
-                            board[0][2] = 2;
-                            board[1][1] = 2;
-                            board[2][0] = 2;
-
-                        }
-                        return;
-
-                    }
-                    return;
-
-                }
-                test[i][j] = temp;
+        if(row >= 0) {
+            if(board[row][empty_c(row)] != 1) {
+                board[row][empty_c(row)] = 2;
             }
+            return;
+        }
 
-            if(board[i][j] == 0) {
-                temp = board[i][j];
-                if(winnable(test, row, col, dia)) {
-                    qDebug() << "ai winnable 2";
-                    if(row >= 0) {
-                        if(board[row][empty_c(row)] != 1) {
-                            board[row][empty_c(row)] = 2;
-                        }
-                        return;
-                    }
+        if(col >= 0) {
 
-                    if(col >= 0) {
-
-                        if(board[empty_r(col)][col] != 1) {
-                            board[empty_r(col)][col] = 2;
-                        }
-                        return;
-                    }
-
-                    if(dia == 0) {
-
-                        if(board[0][0] != 1 and board[1][1] != 1 and board[2][2] != 1) {
-                            board[0][0] = 2;
-                            board[1][1] = 2;
-                            board[2][2] = 2;
-
-                        }
-                        return;
-
-                    }else if(dia == 1) {
-
-                        if(board[0][2] != 1 and board[1][1] != 1 and board[2][0] != 1) {
-                            board[0][2] = 2;
-                            board[1][1] = 2;
-                            board[2][0] = 2;
-
-                        }
-                        return;
-
-                    }
-                    return;
-
-                }
-                test[i][j] = temp;
+            if(board[empty_r(col)][col] != 1) {
+                board[empty_r(col)][col] = 2;
             }
+            return;
+        }
 
+        if(dia == 0) {
 
+            if(board[0][0] != 1 and board[1][1] != 1 and board[2][2] != 1) {
+                board[0][0] = 2;
+                board[1][1] = 2;
+                board[2][2] = 2;
+
+            }
+            return;
+
+        }else if(dia == 1) {
+
+            if(board[0][2] != 1 and board[1][1] != 1 and board[2][0] != 1) {
+                board[0][2] = 2;
+                board[1][1] = 2;
+                board[2][0] = 2;
+
+            }
+            return;
 
         }
+
     }
 
-    /*
-    for(i = 0; i < 3; i++) {
-        for(j = 0; j < 3; j++) {
-
-            if(board[i][j] == 0) {
-                temp = board[i][j];
-                test[i][j] = 2;
-
-                if(not vulnerable(test, row, col, dia)) {
-                    break;
-                }else {
-                    qDebug() << "vulnerabme";
-                 board[i][j] = 2;
-                test[i][j] = temp;
-                }
-            }
-
-            if(board[i][j] == 0) {
-                temp = board[i][j];
-                test[i][j] = 2;
-
-                if(not vulnerable(test, row, col, dia)) {
-                    break;
-                }else {
-                    qDebug() << "vulnerabme";
-                    board[i][j] = 2;
-                test[i][j] = temp;
-                }
-            }
-
-        }
-
-    }*/
-
     if(vulnerable(board, row, col, dia)) {
-        qDebug() << "vulnerable";
-        qDebug() << "crd: " << col <<" " << row << " " << dia;
         if(col > 0) {
 
             if( board[empty_r(col)][col] != 1) {
@@ -270,16 +158,15 @@ void MainWindow::aiMove() {
 
 
     while(true) {
-    QRandomGenerator generator(QDateTime::currentMSecsSinceEpoch());
-    i = generator.bounded(0,3);
-    j = generator.bounded(0,3);
-    if(board[i][j] == 1) {
-        continue;
-    }else {
-        break;
+        QRandomGenerator generator(QDateTime::currentMSecsSinceEpoch());
+        i = generator.bounded(0,3);
+        j = generator.bounded(0,3);
+        if(board[i][j] == 1) {
+            continue;
+        }else {
+            break;
+        }
     }
-    }
-    qDebug() << i << " " << j;
     if(board[i][j] != 1) {
         board[i][j] = 2;
         return;
@@ -430,34 +317,11 @@ int MainWindow::empty_r(int c)
 }
 
 void MainWindow::draw() {
-    /*
-     *
-    QToolButton *btn = ui->gridWidget->findChild<QToolButton *>(name);
-    if(btn->icon().isNull()) {
-        btn->setIcon(QIcon(":/images/images/o.png"));
-        btn->setIconSize(QSize(150,150));
-
-        QChar c = name[name.size() - 1];
-        if(c == QChar('n')) {
-            c = '1';
-        }
-        int val  = c.digitValue() - 1;
-        int col = val / 3;
-        int lin = val % 3;
-        board[col][lin] = 1;
-        for(int i = 0; i < 3; i++) {
-            qDebug() << board[i][0] << " " << board[i][1] << " " << board[i][2];
-        }
-
-     */
-
 
     for(int i = 0; i < 3; i++) {
 
         for(int j = 0; j  < 3; j++) {
-            if(board[i][j] == 0) {
-                continue;
-            }
+
             QString name = "toolButton_";
             if (i == 0 and j == 0) {
 
@@ -471,6 +335,10 @@ void MainWindow::draw() {
 
             QToolButton *btn = ui->gridWidget->findChild<QToolButton *>(name);
 
+            if(board[i][j] == 0) {
+                btn->setIcon(QIcon());
+            }
+
             if(board[i][j] == 1) {
                 btn->setIcon(QIcon(":/images/images/o.png"));
             }
@@ -481,7 +349,6 @@ void MainWindow::draw() {
             btn->setIconSize(QSize(150,150));
         }
     }
-    qDebug() << "finished drawing";
 }
 
 
@@ -537,5 +404,16 @@ void MainWindow::on_toolButton_8_clicked()
 void MainWindow::on_toolButton_9_clicked()
 {
     playerMove("toolButton_9");
+}
+
+
+void MainWindow::on_toolButton_11_clicked()
+{
+    for(int i = 0; i < 3; i++) {
+        for(int j =0; j < 3; j++) {
+            board[i][j] = 0;
+        }
+    }
+    draw();
 }
 
