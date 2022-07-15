@@ -13,7 +13,13 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
      <number>0</number>
@@ -80,31 +86,28 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="BtnSound">
-         <property name="font">
-          <font>
-           <family>Script</family>
-          </font>
+        <widget class="QPushButton" name="pushButton">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(21, 23, 113);
-border: none;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="Reources.qrc">
-           <normaloff>:/images/images/audio.png</normaloff>:/images/images/audio.png</iconset>
-         </property>
-         <property name="iconSize">
+         <property name="minimumSize">
           <size>
            <width>60</width>
            <height>60</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(21, 23, 113);
+border:none;</string>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -131,7 +134,6 @@ border: none;</string>
          </property>
          <property name="font">
           <font>
-           <family>Montserrat SemiBold</family>
            <pointsize>14</pointsize>
           </font>
          </property>
@@ -144,7 +146,7 @@ border-radius: 15px;
 color: white;</string>
          </property>
          <property name="text">
-          <string>Main Menu</string>
+          <string>EXIT</string>
          </property>
         </widget>
        </item>

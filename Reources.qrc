@@ -3,8 +3,6 @@
         <file>images/icon.ico</file>
         <file>images/o.png</file>
         <file>images/x.png</file>
-        <file>images/audio.png</file>
-        <file>images/mute.png</file>
         <file>images/rotate.png</file>
     </qresource>
 </RCC>

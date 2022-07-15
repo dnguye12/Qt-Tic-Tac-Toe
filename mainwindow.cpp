@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
     init();
 }
 
@@ -277,12 +279,12 @@ bool winnable(QVector<QVector<int>> board,int &row, int &col, int &dia) {
         return true;
     }
 
-    if( (a == 2 and d == 2 and g != 1) or (a == 2 and d != 1 and g == 2) or (a != 1 and d == 2 and g == 2)) {
+    if( (b == 2 and e == 2 and h != 1) or (b == 2 and e != 1 and h == 2) or (b != 1 and e == 2 and h == 2)) {
         col = 1;
         return true;
     }
 
-    if( (a == 2 and d == 2 and g != 1) or (a == 2 and d != 1 and g == 2) or (a != 1 and d == 2 and g == 2)) {
+    if( (c == 2 and f == 2 and i != 1) or (c == 2 and f != 1 and i == 2) or (c != 1 and f == 2 and i == 2)) {
         col = 2;
         return true;
     }
@@ -415,5 +417,11 @@ void MainWindow::on_toolButton_11_clicked()
         }
     }
     draw();
+}
+
+
+void MainWindow::on_BtnBack_clicked()
+{
+    close();
 }
 
